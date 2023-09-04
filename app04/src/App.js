@@ -7,11 +7,9 @@ import Say from './Say'
 function App() {
   return (
     <div>
-      <InputSample />
-      <hr/>
-      <InputTest />
-      <hr/>
-      <Say />
+      <InputSample /> <hr/>
+      <InputTest /> <hr/>
+      <Say /> <hr/> 
     </div>
   );
 }
