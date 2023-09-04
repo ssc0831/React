@@ -4,6 +4,7 @@ import InputSample from "./InputSample"
 import InputTest from './InputTest';
 import Say from './Say'
 import Counter from './Counter';
+import Parent from './Parent';
 
 function App() {
   return (
@@ -12,6 +13,8 @@ function App() {
       <InputTest /> <hr/>
       <Say /> <hr/>
       <Counter /> <hr/>
+      <Parent /> <hr/>
+     
     </div>
   );
 }
