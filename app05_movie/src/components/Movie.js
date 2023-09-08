@@ -9,8 +9,18 @@ class Movie extends Component{
                 
                 <div>
                     <h3 className="movie__title">{title}</h3>
-                    <h5 className="movie__year">{title}</h5>
-                    
+                    <h5 className="movie__year">{year}</h5>
+                    <ul className="movie__genres">
+                        {
+                            genres.map((genre, index) =>{
+                                return(
+                                    <li key={index}>
+                                        {genre}
+                                    </li>
+                                )
+                            })
+                        }
+                    </ul>    
                     <p>{summary.slice(0,100)}...</p>
                 </div>
 
