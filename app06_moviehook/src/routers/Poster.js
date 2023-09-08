@@ -4,7 +4,7 @@ import './Home.css'
 import Movie from '../components/Movie';
 
 
-const Home =() =>{
+const Poster =() =>{
     const [movies, setMovies] = useState([])
     const [isLoading, setLoading ] = useState(true)
     const getMovies = () =>{
@@ -32,13 +32,9 @@ const Home =() =>{
                                 movies.map((movie) =>{
                                     return (
                                         //사진, title, year,genres, summary
-                                        <Movie key={movie.id}  
-                                        year = {movie.year}
-                                        title = {movie.title}
-                                        summary = {movie.summary}
-                                        poster = {movie.medium_cover_image}
-                                        genres = {movie.genres}
-                                     />
+                                        <img key={movie.id} 
+                                        src={movie.medium_cover_image} 
+                                        alt={movie.title} title={movie.title} />
                                     )
                                 })
                             }
@@ -50,4 +46,4 @@ const Home =() =>{
          </section>
     )
 }
-export default Home ;
+export default Poster ;

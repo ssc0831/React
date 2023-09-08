@@ -3,10 +3,12 @@ import './Navigation.css'
 
 
 function Navigation(){
-    return(
+    return (
         <div className="nav">
-            <Link to="/"> Home </Link>
-            <Link to="/about"> About </Link>
+            <Link to="/">Home</Link>
+            <Link to="/about">About</Link>
+            <Link to="/poster">Poster</Link>
+
         </div>
     )
 }

@@ -1,11 +1,11 @@
 import './About.css'
 
-const About = () => {
+const About = () =>{
     return(
-        <div className="about__container">
-                <span>App06_About</span>
+        <div className='about__container'>
+                <span>app06 _  About</span>
                 <span>2023</span>
-            </div>
+        </div>
     )
 }
 export default About;
