@@ -17,7 +17,7 @@ const ToDoForm = ({ loadContent }) => {
     })
   }
 
-  const submitTodo = () => {
+  const insertTodo = () => {
     axios.post('/todo/insert', {
       subject: formContent.subject,
       name: formContent.name,
@@ -33,24 +33,26 @@ const ToDoForm = ({ loadContent }) => {
       })
     })
 
-    // const insertTodo = (todo) => {
-    //   axios.post('/todo/insert', {
-    //     subject: todo.subject,
-    //     name: todo.name,
-    //     summary: todo.summary
-    //   }).then((resp) => {
-    //     alert("등록 완료");
-    //     setListContent(listContent.concat(
-    //       {num : resp.data.num,
-    //         name : todo.name,
-    //         subject : todo.subject,
-    //         summary : todo.summary,
-    //         ...listContent})
-    //       )
-    //   })
-    // }    
+    // 주석 처리된 코드 블록
+    /*
+    const insertTodo = (todo) => {
+      axios.post('/todo/insert', {
+        subject: todo.subject,
+        name: todo.name,
+        summary: todo.summary
+      }).then((resp) => {
+        alert("등록 완료");
+        setListContent(listContent.concat(
+          {num : resp.data.num,
+            name : todo.name,
+            subject : todo.subject,
+            summary : todo.summary,
+            ...listContent})
+          )
+      })
+    }    
+    */
 
-    const insertTodo = (todo) =>{
     fetch('/todo/insert', {
       method: 'post',
       headers: {
@@ -71,8 +73,8 @@ const ToDoForm = ({ loadContent }) => {
           summary: ''
         })
       })
-    }
   }
+
   return (
     <Container>
       <Form>
@@ -91,10 +93,10 @@ const ToDoForm = ({ loadContent }) => {
           <Form.Control as="textarea" name="summary" rows={3}
             onChange={getValue} value={formContent.summary} />
         </Form.Group>
-        <Button variant="primary" onClick={submitTodo}>전송</Button>
+        {/* <Button variant="primary" onClick={insertTodo}>전송</Button> */}
+        <Button variant="primary">전송</Button>
         <Button variant="success" onClick={insertTodo}>추가</Button>
       </Form>
-
     </Container>
   )
 }
