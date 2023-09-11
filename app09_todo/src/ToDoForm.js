@@ -33,7 +33,6 @@ const ToDoForm = ({ loadContent }) => {
       })
     })
 
-    // 주석 처리된 코드 블록
     /*
     const insertTodo = (todo) => {
       axios.post('/todo/insert', {
