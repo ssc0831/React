@@ -8,8 +8,7 @@ function Header(){
     return(
         <Navbar bg="primary" data-bs-theme="dark">
         <Container>
-            <h1><b>Movie</b></h1>
-          <Navbar.Brand href="/"></Navbar.Brand>
+          <Navbar.Brand href="/"><h1>Movie</h1></Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link href="/home">Home</Nav.Link>
             <Nav.Link href="/about">About</Nav.Link>
