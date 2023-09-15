@@ -1,9 +1,5 @@
 import React from "react";
-import {
-    BrowserRouter,
-    Routes,
-    Route
-} from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import styled from "styled-components";
 // Pages
 import MainPage from './component/page/MainPage';
