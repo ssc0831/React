@@ -14,5 +14,7 @@ npm install axios bootstrap react-bootstrap react-router-dom styled-components .
 
 ### 경로 전환 및 React 실행
 C:\Users\it>cd C:\react_works
+
 C:\react_works>cd first-app
+
 C:\react_works\first-app>npm start (안되면 재실행 하면됨)
