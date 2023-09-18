@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import TextInput from "../ui/TextInput";
 import Button from "../ui/Button";
+import axios from 'axios';
 
 const Wrapper = styled.div`
     padding: 16px;
@@ -24,40 +25,58 @@ const Container = styled.div`
     }
 `;
 
-function PostWritePage(props) {
+function PostWritePage(){
     const navigate = useNavigate();
 
-    const [title, setTitle] = useState("");
-    const [content, setContent] = useState("");
+    const [post, setPost] = useState({
+        title : '',
+        content : '',
+        comments : ''
+    });
 
-    return (
+
+    const insertPost = () => {
+        axios.post('/post/insert',{
+            title : post.title,
+            content : post.content
+        })
+        .then(() => {
+            alert('추가 성공')
+            navigate('/')
+        })
+
+    }
+
+
+    return(
         <Wrapper>
             <Container>
-                <TextInput
+                <TextInput 
                     height={20}
-                    value={title}
+                    value={post.title}
                     onChange={(e) => {
-                        setTitle(e.target.value);
+                        setPost({title : e.target.value , content : post.content})
                     }}
+                    
                 />
 
-                <TextInput
+                <TextInput 
                     height={480}
-                    value={content}
+                    value={post.content}
                     onChange={(e) => {
-                        setContent(e.target.value);
+                        setPost({title : post.title , content : e.target.value})
                     }}
+                    name='content'
                 />
 
-                <Button
+                <Button 
                     title="글 작성하기"
-                    onClick={() => {
-                        navigate("/");
-                    }}
+                    onClick={insertPost}                
                 />
+            
             </Container>
-        </Wrapper>
-    );
-}
 
+        </Wrapper>
+    )
+}
 export default PostWritePage;

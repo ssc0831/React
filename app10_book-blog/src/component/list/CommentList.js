@@ -15,16 +15,21 @@ const Wrapper = styled.div`
     }
 `;
 
-function CommentList(props) {
-    const { comments } = props;
+const CommentList = ({comments}) => {
+   // const {comments} = props;
+    console.log("CommentList comments ",comments )
 
-    return (
+    return(
         <Wrapper>
-            {comments.map((comment, index) => {
-                return <CommentListItem key={comment.id} comment={comment} />;
-            })}
-        </Wrapper>
-    );
-}
+            {
+                comments && comments.map((comment,i) => (
+                    <CommentListItem 
+                        key={i}
+                        comment={comment}/>
 
+                ))
+            }
+        </Wrapper>
+    )
+}
 export default CommentList;

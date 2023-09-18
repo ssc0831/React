@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import CommentList from "../list/CommentList";
 import TextInput from "../ui/TextInput";
 import Button from "../ui/Button";
-import data from "../../data.json";
+import axios from "axios";
 
 const Wrapper = styled.div`
     padding: 16px;
@@ -48,49 +48,86 @@ const CommentLabel = styled.p`
     font-weight: 500;
 `;
 
-function PostViewPage(props) {
-    const navigate = useNavigate();
-    const { postId } = useParams();
 
-    const post = data.find((item) => {
-        return item.id == postId;
+function PostViewPage(){
+    const navigate = useNavigate();
+    const param = useParams();
+
+    const [post, setPost] = useState({
+        id : '',
+        title : '',
+        content : '',
+        comment : ''
     });
 
-    const [comment, setComment] = useState("");
+    console.log(param.postId)
+    const detailPost = () => {
+        axios.get(`/post/detail/${param.postId}`)
+        .then((resp) => {
+            console.log("resp.data.comments", resp.data)
+            setPost(resp.data)
 
-    return (
+        })
+    }
+
+    useEffect(()=>{
+        detailPost()
+    
+      },[])
+
+    const [comments, setComments] = useState({
+        content : ''
+    });
+
+    const commentInsert = () => {
+        axios.post(`/comment/insert/${param.postId}`,{
+            content : comments.content
+        })
+        .then(() => {
+            alert('추가 성공')
+            detailPost()
+        })
+
+    }
+
+    return(
         <Wrapper>
             <Container>
-                <Button
-                    title="뒤로 가기"
+                <Button 
+                    title="뒤로가기"
                     onClick={() => {
-                        navigate("/");
-                    }}
-                />
+                        navigate("/")
+                    }}/>
+                    <br/><br/>
                 <PostContainer>
+               
                     <TitleText>{post.title}</TitleText>
                     <ContentText>{post.content}</ContentText>
                 </PostContainer>
 
-                <CommentLabel>댓글</CommentLabel>
-                <CommentList comments={post.comments} />
-
-                <TextInput
+                 <CommentLabel>댓글</CommentLabel>
+                <CommentList comments={post.comment}/> 
+                <br/>
+                <TextInput 
                     height={40}
-                    value={comment}
-                    onChange={(event) => {
-                        setComment(event.target.value);
-                    }}
-                />
-                <Button
+                    value={comments.content}
+                    onChange={(e) => {
+                        setComments({content : e.target.value})
+                    }}/> 
+                    <br/><br/>
+                <Button 
                     title="댓글 작성하기"
-                    onClick={() => {
-                        navigate("/");
-                    }}
-                />
-            </Container>
-        </Wrapper>
-    );
-}
+                    onClick={commentInsert}/>
 
+            </Container>
+
+        </Wrapper>
+    )
+}
 export default PostViewPage;
+
+
+
+
+
+
