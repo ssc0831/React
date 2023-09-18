@@ -1,33 +1,26 @@
-import React from "react";
-import Topic from "./Topic";
+import { NavLink, Outlet } from "react-router-dom";
 
-const Topics = ({ contents }) => {
-  return (
-    <div>
-      <h2>Topics - 주제들</h2>
-      <ul>
-        {
-        contents.map((content) => (
-        //   <li key={content.id}>
-        //     <div>
-        //       id: {content.id} <br/>
-        //       title: {content.title} <br/>
-        //       desc: {content.desc} <br/><br />
-        //     </div>
-        //   </li>
-
-            <li>
-                <Topic Key = {content.id}
-                id = {content.id}
-                title = {content.title}
-                desc ={content.desc} />
+const Topics = ({contents}) => {
+    const list = []
+    for (let i=0; i<contents.length; i++){
+        list.push(
+            <li key={contents.id}>
+                <NavLink to={`/topics/${contents[i].id}`}>
+                    {contents[i].title} </NavLink>
             </li>
+        )
+    }
 
-        ))
-        }
-      </ul>
-    </div>
-  );
+    return (
+        <div>
+            <h2>Topics</h2>
+            토픽페이지 입니다.
+            <ul>
+                {list}
+                {/* 하위 컴포넌트 보여지는 부분 */}
+                <Outlet></Outlet>
+            </ul>
+        </div>
+    )
 }
-
 export default Topics;

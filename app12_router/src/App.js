@@ -3,8 +3,8 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Navigation from './Navigation';
 import Home from './Home';
 import Contact from './Contact';
+import Topic from './Topic';
 import Topics from './Topics';
-import Topics2 from './Topics2';
 import Login from './Login';
 
 function App() {
@@ -26,9 +26,9 @@ function App() {
         <Route path='/contact' element={<Contact />}>
         </Route>
         <Route path='/topics' element={<Topics contents={contents} />}>
-        </Route>
+    
         {/* 하위 주소를 입력받을 때 해당 Route안에 Route를 포함시킬수 있다. */}
-        <Route path=':id' element={<Topics2 contents={contents}/>}>
+        <Route path=':id' element={<Topic contents={contents}/>}> </Route>
         </Route>
         <Route path='/login' element={<Login />}>
         </Route>        
