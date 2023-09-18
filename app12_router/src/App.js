@@ -26,8 +26,8 @@ function App() {
         </Route>
         <Route path='/contact' element={<Contact />}>
         </Route>
-        <Route path='/topics' element={<Topics contents={contents} />}>
         {/* <Route path='/topics' element={<Topics1 contents={contents} />}></Route> */}
+        <Route path='/topics' element={<Topics contents={contents} />}>
         {/* 하위 주소를 입력받을 때 해당 Route안에 Route를 포함시킬수 있다. */}
         <Route path=':id' element={<Topic contents={contents}/>}> </Route>
         </Route>
