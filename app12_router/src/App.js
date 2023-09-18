@@ -6,6 +6,7 @@ import Contact from './Contact';
 import Topic from './Topic';
 import Topics from './Topics';
 import Login from './Login';
+// import Topic from './Topic1';
 
 function App() {
   const contents = [
@@ -26,7 +27,7 @@ function App() {
         <Route path='/contact' element={<Contact />}>
         </Route>
         <Route path='/topics' element={<Topics contents={contents} />}>
-    
+        {/* <Route path='/topics' element={<Topics1 contents={contents} />}></Route> */}
         {/* 하위 주소를 입력받을 때 해당 Route안에 Route를 포함시킬수 있다. */}
         <Route path=':id' element={<Topic contents={contents}/>}> </Route>
         </Route>
