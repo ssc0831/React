@@ -6,6 +6,7 @@ import Contact from './Contact';
 import Topic from './Topic';
 import Topics from './Topics';
 import Login from './Login';
+import LoginResult from './LoginResult';
 // import Topic from './Topic1';
 
 function App() {
@@ -28,10 +29,13 @@ function App() {
         </Route>
         {/* <Route path='/topics' element={<Topics1 contents={contents} />}></Route> */}
         <Route path='/topics' element={<Topics contents={contents} />}>
-        {/* 하위 주소를 입력받을 때 해당 Route안에 Route를 포함시킬수 있다. */}
+        {/* 하위 주소를 입력받을 때 해당 Route안에 Route를 포함시킬수 있다. 
+        /topics/1/, /topics/2/, /topics/3/ */}
         <Route path=':id' element={<Topic contents={contents}/>}> </Route>
         </Route>
         <Route path='/login' element={<Login />}>
+        {/* /login/result/id1/pw1/, /login/result/id2/pw2/, /login/result/id3/pw3/ ... */}
+          <Route path='result/:id/:pw' element={<LoginResult />}></Route>
         </Route>        
       </Routes>
     </BrowserRouter>
