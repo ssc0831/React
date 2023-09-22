@@ -22,13 +22,14 @@ const ContentText = styled.p`
     white-space: pre-wrap;
 `;
 
-function CommentListItem(props){
-    const {comment} = props;
-    console.log("Dd " ,comment.content)
-    return(
+function CommentListItem(props) {
+    const { comment } = props;
+
+    return (
         <Wrapper>
             <ContentText>{comment.content}</ContentText>
         </Wrapper>
-    )
+    );
 }
+
 export default CommentListItem;

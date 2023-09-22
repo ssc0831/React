@@ -1,9 +1,9 @@
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import PostList from "../list/PostList";
 import Button from "../ui/Button";
-import axios from "axios";
-import React, { useState,useEffect } from "react";
+import data from '../../data.json';
 
 const Wrapper = styled.div`
     padding: 16px;
@@ -18,53 +18,35 @@ const Container = styled.div`
     width: 100%;
     max-width: 720px;
 
-    & > * {    
+    & > * {
         :not(:last-child) {
             margin-bottom: 16px;
         }
     }
 `;
-// & > * 전체에 대한 자식들
 
-function MainPage() {
+function MainPage(props) {
     const navigate = useNavigate();
-    const [posts, setPosts] = useState([]);
 
-    
-    const listPost = () => {
-        axios.get('/post/list')
-        .then((resp) => {
-            console.log(resp);
-            setPosts(resp.data)
-        })
-    }
-
-    useEffect(() => {
-        listPost()
-    },[])
-
-    return(
+    return (
         <Wrapper>
             <Container>
                 <Button
-                    title="글쓰기"
+                    title="글 작성하기"
                     onClick={() => {
-                        navigate("/postWrite");
+                        navigate("/post-write");
                     }}
                 />
-                <br/><br/>
 
                 <PostList
-                    posts={posts}
-                    onClickItem={(item)=>{
-                        navigate(`/post/${item.id}`)
+                    posts={data}
+                    onClickItem={(item) => {
+                        navigate(`/post/${item.id}`);
                     }}
                 />
-
-        
-
             </Container>
         </Wrapper>
-    )
+    );
 }
+
 export default MainPage;
