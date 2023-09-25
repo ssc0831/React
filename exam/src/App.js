@@ -28,6 +28,7 @@ function App() {
   const todoDelete = (num) => {
     axios.delete('todo/delete/' + num)   // todo/delete/{num}
       .then((resp) => {
+        alert('삭제 완료')
         setListContent(listContent
           .filter(todo => todo.num !== num))
       })
